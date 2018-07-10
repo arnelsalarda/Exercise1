@@ -1,0 +1,124 @@
+using System;
+using System.Collections.Generic;
+
+namespace Oop{
+class Student{
+     public int studentId;
+        public string firstName;
+        public string lastName;
+        public int studAge; 
+    
+        public void setStudentId(int studentId){
+            this.studentId = studentId;
+        }
+        public void setFirstName(string firstName){
+            this.firstName = firstName;
+        }
+        public void setLastName(string lastName){
+            this.lastName = lastName;
+        }
+        public void setStudAge(int studAge){
+            this.studAge = studAge;
+        }
+        public int getStudentId(){
+            return studentId;
+        }
+        public String getFirstName(){
+            return firstName;
+        }
+        public String getLastName(){
+            return lastName;
+        }
+        public int getstudAge(){
+            return studAge;
+        }
+}
+
+    class EnrollStudent : Student{
+        List<string> studentList = new List<string>();
+        public string firstName1 = "";
+        public string lastName1="";
+        public string studId="";
+        public int studentAge=0;
+        
+        
+        public void Input(){
+            
+            for(int i = 0; i < 10; i++){
+                Console.WriteLine("Enter student number: ");
+                studId = Console.ReadLine();
+                Console.WriteLine("Enter first name: ");
+                firstName = Console.ReadLine();
+                Console.WriteLine("Enter last name: ");
+                lastName = Console.ReadLine();
+                Console.WriteLine("Enter student age: ");
+                studentAge = Convert.ToInt32(Console.ReadLine());
+                
+                studentList.Add(studId + " " + firstName +" "+ lastName + " " + Convert.ToString(studentAge));
+                
+                int enrollAnotherStudent = 1;
+                Console.WriteLine("1 - YES \r\n2 - NO");
+                Console.WriteLine("Do you want to enroll another student?");
+                enrollAnotherStudent = Convert.ToInt32(Console.ReadLine());
+                if(enrollAnotherStudent == 1){
+                    Console.WriteLine(studentList);
+                    continue;
+                }
+                else{
+                    break;
+                }
+                
+            }
+        }
+    }
+
+
+    class StudentInfo : Student{
+        
+        public void validateId(int temporaryId){
+        }
+        
+        public void Display(){
+            Console.WriteLine("First name: {0}", getFirstName());
+            Console.WriteLine("Last name: {0}", getLastName());
+            Console.WriteLine("Age: {0}", getstudAge());
+        }
+    }
+    
+    
+   
+
+    class MainProg{
+        static void Main(string[] args){
+        int choice = 1;
+        char goBackToHomeChoice;
+         Console.WriteLine("1 - ENROLL \r\n2 - STUDENT INFO");
+         Console.WriteLine("Enter your choice: ");
+         choice = Convert.ToInt32(Console.ReadLine());
+         
+         //do{
+         if(choice == 1){
+            EnrollStudent e = new EnrollStudent();
+            e.Input();
+         }
+         else if(choice == 2){
+             int temporaryId = 0;
+             Console.WriteLine("Enter id number: ");
+             temporaryId = Convert.ToInt32(Console.ReadLine());
+            
+             StudentInfo s = new StudentInfo();
+             s.setStudentId(2132);
+             s.setFirstName("arnel");
+             s.setLastName("salarda");
+             s.setStudAge(20);
+             s.Display();
+         }
+         //Console.WriteLine("Y - yes N - no");
+         //Console.WriteLine("Enter choice: ");
+         //goBackToHomeChoice = Console.ReadKey().KeyChar;
+         Console.ReadLine();
+        //}while(isGobackToHome);
+         
+        }
+    }
+}
